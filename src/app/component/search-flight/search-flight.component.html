@@ -1,0 +1,121 @@
+
+    <div id="booking" class="section">
+       <div class="section-center">
+        <form>
+          <div class="container">
+             <div class="row">
+                <div class="booking-form">
+                   <div class="form-group">
+                      <mat-radio-group name="flavors" class="form-checkbox" [(ngModel)]="tripSelection" #radioGroup="matRadioGroup" (ngModelChange)="radioButtonChanged()">
+                      <mat-radio-button value="roundtrip" >Roundtrip</mat-radio-button>
+                      <mat-radio-button value="one-way">One way</mat-radio-button>
+                      </mat-radio-group>                          
+                   </div>
+                   <div class="row">
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <mat-label class="form-label">Flying From</mat-label>
+                            <mat-form-field class="form-control">
+                               
+                               <input
+                               type="text"                
+                               aria-label="source"
+                               matInput
+                               [formControl]="sourcePointControler"      
+                               [matAutocomplete]="auto"
+                               />
+                               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)='selectSourceOption($event)'>
+                               <mat-option
+                               *ngFor="let option of sourceOptions | async"
+                               [value]="option"
+                               >
+                               {{option}}
+                               </mat-option>
+                               </mat-autocomplete>
+                            </mat-form-field>
+                         </div>
+                      </div>
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <mat-label class="form-label">Flying To</mat-label>
+                            <mat-form-field class="form-control">
+                               
+                               <input
+                               type="text"              
+                               aria-label="source"
+                               matInput
+                               [formControl]="destnationPointControler"      
+                               [matAutocomplete]="auto1"
+                               />
+                               <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" (optionSelected)='selectDestnationOption($event)'>
+                               <mat-option
+                               *ngFor="let option of destinationOptions | async"
+                               [value]="option"
+                               >
+                               {{option}}
+                               </mat-option>
+                               </mat-autocomplete>
+                            </mat-form-field>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-3">
+                         <div class="form-group">
+                            <span class="form-label">Departing</span>
+                            <mat-form-field class="form-control">
+                               <mat-datepicker #dpicker></mat-datepicker>
+                               <mat-datepicker-toggle matPrefix [for]="dpicker"></mat-datepicker-toggle>
+                               <input matInput [matDatepicker]="dpicker" placeholder="Choose a date" [(ngModel)]="departureDate" name="departure">
+                            </mat-form-field>
+                         </div>
+                      </div>
+                      <div class="col-md-3" *ngIf = "ishidden">
+                         <div class="form-group">
+                            <span class="form-label">Returning</span>
+                            <mat-form-field class="form-control">
+                               <mat-datepicker #rpicker></mat-datepicker>
+                               <mat-datepicker-toggle matPrefix [for]="rpicker"></mat-datepicker-toggle>
+                               <input matInput [matDatepicker]="rpicker" placeholder="Choose a date" [(ngModel)]="returnDate" name="return">
+                            </mat-form-field>
+                         </div>
+                      </div>
+                      <div class="col-md-2">
+                         <div class="form-group">
+                            <span class="form-label">Adults (18+)</span>
+                            <mat-form-field class="form-control">                   
+                               <mat-select [(value)]="adultSelected">
+                               <mat-option *ngFor="let adult of adults" [value]="adult.value">
+                               {{adult.viewValue}}
+                               </mat-option>
+                               </mat-select>
+                            </mat-form-field>
+                         </div>
+                      </div>
+                      <div class="col-md-2">
+                         <div class="form-group">
+                            <span class="form-label">Children (0-17)</span>
+                            <mat-form-field class="form-control">
+                               <mat-select [(value)] = "childrenSelected">
+                               <mat-option *ngFor="let children of childrens" [value]="children.value">
+                               {{children.viewValue}}
+                               </mat-option>
+                               </mat-select>
+                            </mat-form-field>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-3">
+                         <div class="form-btn">
+                            <button mat-button class="submit-btn"  (click)="clickEvent()">Show flights</button>  
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </form>
+       </div>
+    </div>
+ 
