@@ -16,6 +16,7 @@ import {SearchService} from '../app/service/search/search.service';
 import {MessageService} from '../app/service/message/message.service';
 import { SearchFlightComponent } from './component/search-flight/search-flight.component';
 import { ShowFlightComponent } from './component/show-flight/show-flight.component'
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ShowFlightComponent } from './component/show-flight/show-flight.compone
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    CoreModule
   ],
   providers: [SearchService, MessageService],
   bootstrap: [AppComponent]
