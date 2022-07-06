@@ -5,30 +5,9 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
 import { Moment } from 'moment';
 import { map, Observable, startWith } from 'rxjs';
-import {SearchService} from '../../service/search.service'
-import {MessageService} from '../../service/message.service';
-interface Adult {
-  value: string;
-  viewValue: string;
-}
-interface Children {
-  value: string;
-  viewValue: string;
-}
-interface TravelClass {
-  value: string;
-  viewValue: string;
-}
-
-interface SearchInputParam{
-  source: string;
-  destnation: string;
-  departDate: string;
-  returningDate: string;
-  adult: string;
-  child: string;
-  tripType: string;
-}
+import {SearchService} from '../../service/search/search.service'
+import {MessageService} from '../../service/message/message.service';
+import { Adult, Children, SearchInputParam } from 'src/app/model/search';
 
 @Component({
   selector: 'app-search-flight',
